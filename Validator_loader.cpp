@@ -1,3 +1,7 @@
+//Date: 6 Oct 1973
+// مره واحد راح يقعد على القهوه اتلسع
+
+
 #include "InstructionValidator.h"
 
 
@@ -7,10 +11,11 @@ bool InstructionValidator::isValidOpcode(uint8_t opcode) {
     }
     return false;
 }
-
+// /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
 bool InstructionValidator::validate(const Instructionfields& fields) {
     return isValidOpcode(fields.opcode) && validateOperand(fields);
 }
+// /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
 
    bool InstructionValidator::validateOperand(const Instructionfields& fields) {
 
@@ -24,5 +29,6 @@ bool InstructionValidator::validate(const Instructionfields& fields) {
         default:
             return true; 
     }
-
+  
    }
+   // /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
