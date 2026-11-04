@@ -15,28 +15,28 @@ bool ProgramLoader::isHexString(const string& text) {
     return true;
 }
 
-// /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
+// /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
 
 bool ProgramLoader::readProgram(const string& filePath, vector<uint16_t>& instructions){
     
     ifstream file(filePath);
 
     if (!file.is_open()) {
-        cout << "Cannot open file: " << filePath << endl;
         return false;
     }
 
 
     string line;
     while(getline(file, line)){
-        if (line.empty() || line[0] == ';') {
-        continue;
+        size_t first = line.find_first_not_of(" \t\r\n");
+        if (first == string::npos || line[first] == ';') {
+             continue;
         }
 
-        string word = line.substr(0, 4);
 
+        string word = line.substr(first, 4);
+       
         if (word.size() !=4 || !isHexString(word)) {
-            cout << "Bad word: [" << word << "] size=" << word.size() << endl;
       
             return false;
         }
@@ -45,13 +45,12 @@ bool ProgramLoader::readProgram(const string& filePath, vector<uint16_t>& instru
     
         int value = stoi(word ,nullptr , 16);
 
-        Instructionfields f;
+        InstructionFields f;
          f.opcode =(value >> 12) & 0xF;
          f.r = (value >> 8) & 0xF;
          f.x = (value >> 4) & 0xF;
          f.y = (value & 0xF);
          if(!InstructionValidator::validate(f)){
-            cout << "Invalid instruction: " << word << endl;
             return false;
          }
 

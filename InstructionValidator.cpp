@@ -12,12 +12,12 @@ bool InstructionValidator::isValidOpcode(uint8_t opcode) {
     return false;
 }
 // /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
-bool InstructionValidator::validate(const Instructionfields& fields) {
+bool InstructionValidator::validate(const InstructionFields& fields) {
     return isValidOpcode(fields.opcode) && validateOperand(fields);
 }
 // /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
 
-   bool InstructionValidator::validateOperand(const Instructionfields& fields) {
+   bool InstructionValidator::validateOperand(const InstructionFields& fields) {
 
     switch (fields.opcode) {
         case 4: 

@@ -4,7 +4,7 @@
 #include <cstdint>  
 
 
-struct Instructionfields {
+struct InstructionFields {
     uint8_t opcode;
     uint8_t r;
     uint8_t x;
@@ -15,8 +15,8 @@ struct Instructionfields {
 class InstructionValidator {
 public:
     static bool isValidOpcode(uint8_t opcode);
-    static bool validateOperand(const Instructionfields& fields);
-    static bool validate(const Instructionfields& fields);
+    static bool validateOperand(const InstructionFields& fields);
+    static bool validate(const InstructionFields& fields);
 };
 
 
