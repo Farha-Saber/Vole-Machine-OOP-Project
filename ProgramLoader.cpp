@@ -1,4 +1,3 @@
-// Date: 6 Oct 1973
 #include "InstructionValidator.h"
 #include "ProgramLoader.h"
 #include <iostream>
@@ -15,7 +14,6 @@ bool ProgramLoader::isHexString(const string& text) {
     return true;
 }
 
-// /*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/
 
 bool ProgramLoader::readProgram(const string& filePath, vector<uint16_t>& instructions){
     

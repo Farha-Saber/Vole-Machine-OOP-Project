@@ -1,0 +1,8 @@
+; Vole Machine Program
+; Purpose: Load 2A into R0, copy it to R1 then R2, and display it on screen.
+
+202A   ; R0 = 2A
+4001   ; R1 = R0
+4012   ; R2 = R1
+32FF   ; Store R2 to FF (screen)
+C000   ; Halt

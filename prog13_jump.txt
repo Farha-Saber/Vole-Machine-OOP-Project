@@ -1,0 +1,10 @@
+; Vole Machine Program
+; Purpose: Test JUMP. R1 equals R0, so the jump skips the instruction that loads 99.
+
+2005   ; R0 = 05
+2105   ; R1 = 05
+B108   ; If R1 == R0 jump to address 08
+2299   ; skipped: R2 = 99
+2207   ; (address 08) R2 = 07
+32FF   ; Store R2 to FF (screen)
+C000   ; Halt

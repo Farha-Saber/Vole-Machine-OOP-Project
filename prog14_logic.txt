@@ -1,0 +1,10 @@
+; Vole Machine Program
+; Purpose: Apply AND, OR and XOR on 0F and 3C, show the AND result (0C) on screen.
+
+200F   ; R0 = 0F
+213C   ; R1 = 3C
+8201   ; R2 = R0 AND R1
+7301   ; R3 = R0 OR R1
+9401   ; R4 = R0 XOR R1
+32FF   ; Store R2 to FF (screen)
+C000   ; Halt
