@@ -1,42 +1,34 @@
-#ifndef ALU_H
-#define ALU_H
+#include "ALU.h"
 
-using namespace std;
+int ALU::add(int a, int b) {
+    return a + b;
+}
 
-class ALU {
-public:
-     int add(int a, int b) {
-        return a + b;
-    }
+float ALU::addFloating(float a, float b) {
+    return a + b;
+}
 
-    float addFloating(float a, float b) {
-        return a + b;
-    }
+int ALU::bitwiseOR(int a, int b) {
+    return a | b;
+}
 
-    int bitwiseOR(int a, int b) {
-        return a | b;
-    }
+int ALU::bitwiseAND(int a, int b) {
+    return a & b;
+}
 
-    int bitwiseAND(int a, int b) {
-        return a & b;
-    }
+int ALU::bitwiseXOR(int a, int b) {
+    return a ^ b;
+}
 
-    int bitwiseXOR(int a, int b) {
-        return a ^ b;
-    }
+int ALU::rotateRight(int val, int shifts) {
+    shifts %= 16;
+    return (val >> shifts) | (val << (16 - shifts));
+}
 
-    int rotateRight(int val, int shifts) {
-        shifts %= 16;
-        return (val >> shifts) | (val << (16 - shifts));
-    }
+bool ALU::checkJump(int regVal, int regZeroVal) {
+    return regVal == regZeroVal;
+}
 
-    bool checkJump(int regVal, int regZeroVal) {
-        return regVal == regZeroVal;
-    }
-
-    bool checkHalt(string op) {
-        return op == "C";
-    }
-};
-
-#endif
+bool ALU::checkHalt(string op) {
+    return op == "C";
+}
