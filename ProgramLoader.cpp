@@ -26,14 +26,13 @@ bool ProgramLoader::readProgram(const string& filePath, vector<uint16_t>& instru
 
     string line;
     while(getline(file, line)){
-        size_t first = line.find_first_not_of(" \t\r\n");
-        if (first == string::npos || line[first] == ';') {
-             continue;
+        
+        if (line.empty() || line[0] == ';') {
+        continue;
         }
 
+        string word = line.substr(0, 4);
 
-        string word = line.substr(first, 4);
-       
         if (word.size() !=4 || !isHexString(word)) {
       
             return false;
