@@ -1,61 +1,68 @@
-#include "InstructionValidator.h"
 #include "ProgramLoader.h"
-#include <iostream>
-#include <fstream>
-#include <cctype>
-using namespace std;
+#include "InstructionValidator.h"
 
-bool ProgramLoader::isHexString(const string& text) {
-    for(int i=0; i< text.size(); i++){
-        if (!isxdigit(text[i])) {
+#include <fstream>
+#include <string>
+#include <cctype>
+
+bool ProgramLoader::isHexString(const std::string& text) {
+    if (text.size() != 4) {
+        return false;
+    }
+
+    for (char c : text) {
+        if (!std::isxdigit(static_cast<unsigned char>(c))) {
             return false;
         }
     }
+
     return true;
 }
 
+bool ProgramLoader::readProgram(
+    const std::string& filePath,
+    std::vector<uint16_t>& instructions
+) {
+    instructions.clear();
 
-bool ProgramLoader::readProgram(const string& filePath, vector<uint16_t>& instructions){
-    
-    ifstream file(filePath);
+    std::ifstream file(filePath);
 
     if (!file.is_open()) {
         return false;
     }
 
+    std::string line;
 
-    string line;
-    while(getline(file, line)){
-        
-        if (line.empty() || line[0] == ';') {
-        continue;
+    while (std::getline(file, line)) {
+        size_t first = line.find_first_not_of(" \t\r\n");
+
+        if (first == std::string::npos || line[first] == ';') {
+            continue;
         }
 
-        string word = line.substr(0, 4);
+        std::string word = line.substr(first, 4);
 
-        if (word.size() !=4 || !isHexString(word)) {
-      
+        if (!isHexString(word)) {
             return false;
         }
 
+        unsigned long value = std::stoul(word, nullptr, 16);
 
-    
-        int value = stoi(word ,nullptr , 16);
+        InstructionFields fields{
+            static_cast<uint8_t>((value >> 12) & 0xF),
+            static_cast<uint8_t>((value >> 8) & 0xF),
+            static_cast<uint8_t>((value >> 4) & 0xF),
+            static_cast<uint8_t>(value & 0xF)
+        };
 
-        InstructionFields f;
-         f.opcode =(value >> 12) & 0xF;
-         f.r = (value >> 8) & 0xF;
-         f.x = (value >> 4) & 0xF;
-         f.y = (value & 0xF);
-         if(!InstructionValidator::validate(f)){
+        if (!InstructionValidator::validate(fields)) {
             return false;
-         }
+        }
 
-
-         instructions.push_back(value);
-
-    
-
+        instructions.push_back(
+            static_cast<uint16_t>(value)
+        );
     }
-    return true;
+
+    return !instructions.empty();
 }
