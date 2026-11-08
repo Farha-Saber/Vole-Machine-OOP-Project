@@ -11,7 +11,7 @@ The project provides two interfaces:
 ## 1. Project Information
 
 **University:** Cairo University  
-**Faculty:** Faculty of Computers and Artificial Intelligence  
+**Faculty:** Faculty of Computing and Artificial Intelligence  
 **Course:** CS213 – Object-Oriented Programming  
 **Instructor:** Dr. Mohammad El-Ramly  
 **Sections:** S15, S16  
@@ -348,4 +348,4 @@ See the `sample_programs/` and `screenshots/` folders for example Vole programs,
 
 **Developed as part of CS213 – Object-Oriented Programming, Assignment 2.**
 
-Cairo University – Faculty of Computers and Artificial Intelligence.
+Cairo University – Faculty of Computing and Artificial Intelligence.
