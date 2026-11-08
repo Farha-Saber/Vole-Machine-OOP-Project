@@ -11,7 +11,7 @@ The project provides two interfaces:
 ## 1. Project Information
 
 **University:** Cairo University  
-**Faculty:** Faculty of Computing and Artificial Intelligence  
+**Faculty:** Faculty of Computers and Artificial Intelligence  
 **Course:** CS213 – Object-Oriented Programming  
 **Instructor:** Dr. Mohammad El-Ramly  
 **Sections:** S15, S16  
@@ -27,8 +27,9 @@ The project provides two interfaces:
 
 ### Project Deliverables
 
-- **Documentation & Report:** [Insert Link to Report / Google Docs]
-- **Demonstration Video:** [Insert Link to YouTube / Google Drive Demo Video]
+- **Documentation & Report:** [View Project Report](https://drive.google.com/file/d/1SlKV4c5cJerrr5p9MJGO8cRpnWcolpxw/view?usp=drive_link)
+- **Design Comparison Video (10 Minutes):** [Watch Design Comparison Video](https://drive.google.com/file/d/1eeR3RErRdhk5Oa5woODr4EpHmtOGhurR/view?usp=drive_link)
+- **GUI Demonstration Video:** [Watch GUI Demo](https://drive.google.com/file/d/1-xMju9Y04MX6sjqjEJ__tpzWDQRMQZnL/view?usp=drive_link)
 
 ### Team Work Breakdown
 
@@ -347,4 +348,4 @@ See the `sample_programs/` and `screenshots/` folders for example Vole programs,
 
 **Developed as part of CS213 – Object-Oriented Programming, Assignment 2.**
 
-Cairo University – Faculty of Computing and Artificial Intelligence.
+Cairo University – Faculty of Computers and Artificial Intelligence.
