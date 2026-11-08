@@ -18,12 +18,28 @@ The project provides two interfaces:
 
 ### Team Members
 
-| Name | Student ID |
-|---|---|
+| Name | Seat Number |
+|---|---:|
 | Fatma Mohamed | 20250464 |
 | Farha Saber | 20250469 |
 | Jana Hossam | 20251098 |
 | Kenzy Medhat | 20251297 |
+
+### Project Deliverables
+
+- **Documentation & Report:** [Insert Link to Report / Google Docs]
+- **Demonstration Video:** [Insert Link to YouTube / Google Drive Demo Video]
+
+### Team Work Breakdown
+
+The project was completed collaboratively, with each team member contributing to different parts of the initial design, documentation, implementation, testing, and graphical interface.
+
+| Team Member | Part 1 Contributions (Initial Design & Documentation) | Implementation Contributions (GitHub Code & GUI) |
+|---|---|---|
+| **Fatma Mohamed** | Video & Report | Machine, Screen, `main.cpp` & README |
+| **Farha Saber** | Initial Design | CPU, Instruction, MemoryBus & GUI |
+| **Jana Hossam** | Assembly Programmer (Testing) | ALU, Memory, Register & Testing 10 Programs |
+| **Kenzy Medhat** | AI Chats & Final Design | ProgramLoader, InstructionValidator & GUI |
 
 ---
 
@@ -47,7 +63,7 @@ The project follows an object-oriented design, separating the machine components
 
 ---
 
-## 3. Project Structure
+## 3. Project Files
 
 The project is organized into backend simulation logic, user interfaces, and supporting resources.
 
@@ -74,65 +90,63 @@ The project is organized into backend simulation logic, user interfaces, and sup
 | `MainWindow.h / MainWindow.cpp` | Implements the main application window and GUI interactions. |
 | `CMakeLists.txt` | Defines the project configuration and build process. |
 
-### Console Interface
+### Console Version
 
 | File | Responsibility |
 |---|---|
 | `main.cpp` | Implements the command-line menu and user interaction. |
 
-### Additional Folders
+### Extra Folders
 
-- `sample_programs/` – Example Vole programs used for testing.
-- `screenshots/` – Screenshots of the GUI and program execution.
+- `sample_programs/` – The Vole programs used for testing.
+- `screenshots/` – GUI and execution screenshots.
 
 ---
 
 ## 4. Requirements
 
-### Console Version
-
-- C++17 compatible compiler.
-- GCC / MinGW or another compatible C++ compiler.
-
 ### GUI Version
 
 - Qt 6 with the Widgets module.
 - CMake 3.16 or newer.
-- C++17 compatible compiler.
-- A compatible Qt Kit (the project was tested with Qt 6.12.0 and MinGW 64-bit).
+- A C++17 compatible compiler.
+- Tested with Qt 6.12.0 and MinGW 64-bit.
+
+### Console Version
+
+- A C++17 compatible compiler.
+- GCC / MinGW or another compatible C++ compiler.
 
 ---
 
-## 5. How to Build and Run
-
-### A. GUI Version – Qt Creator
+## 5. How to Build and Run the GUI (Qt Creator)
 
 1. Extract the project folder.
-2. Open **Qt Creator**.
-3. Select **File → Open File or Project**.
-4. Choose `CMakeLists.txt` from the project folder.
-5. Select the appropriate Qt Kit (for example, Desktop Qt 6.12.0 MinGW 64-bit).
-6. Click **Configure Project**.
-7. Press the green **Run** button or use `Ctrl + R`.
+2. Open Qt Creator, then select **File > Open File or Project...**
+3. Select `CMakeLists.txt` inside the project folder.
+4. Choose the kit **Desktop Qt 6.12.0 MinGW 64-bit** (or another compatible Qt kit).
+5. Click **Configure Project**.
+6. Press the green **Run** button or use `Ctrl + R`.
 
 **Troubleshooting**
 
-If Qt Creator displays `Cannot find source file`:
+If you see `Cannot find source file`:
 
-1. Make sure you opened the correct `CMakeLists.txt`.
-2. Verify that it is located in the same project directory as `gui_main.cpp` and `MainWindow.cpp`.
-3. Select **Build → Clear CMake Configuration**.
-4. Run CMake configuration again.
+1. Make sure you opened the `CMakeLists.txt` located next to `gui_main.cpp` and `MainWindow.cpp`.
+2. Select **Build > Clear CMake Configuration**.
+3. Run CMake configuration again.
 
-### B. Console Version – Without Qt
+---
 
-Open a terminal in the project directory and compile using:
+## 6. How to Build and Run the Console Version (No Qt Needed)
+
+From the project folder, open a terminal and compile using:
 
 ```bash
 g++ -std=c++17 main.cpp Machine.cpp CPU.cpp Instruction.cpp MemoryBus.cpp Screen.cpp ProgramLoader.cpp InstructionValidator.cpp -o vole
 ```
 
-Run the application:
+Then run:
 
 **Windows:**
 
@@ -157,65 +171,64 @@ The console menu provides the following options:
 7. Reset Machine
 8. Exit
 
+- **Load:** Enter the file path (no spaces in the path) and the starting address in hexadecimal (an even number from `00` to `FE`).
+- **Step by Step:** The machine state is displayed after every step. Press Enter to execute the next step, or type `q` followed by Enter to return to the menu.
+
 ---
 
-## 6. How to Use the GUI
+## 7. How to Use the GUI
 
-### Program Loading
+### Program Box
 
-- Enter the starting address in hexadecimal (an even address between `00` and `FE`).
-- Type a four-digit instruction and press **STORE** to write it into memory.
-- Alternatively, use **Browse** to select a program file and then click **Load Program**.
+- **Address (hex):** Enter the starting address, an even number from `00` to `FE`.
+- Type one instruction and press **STORE** to write it at the specified address.
+- Alternatively, press **Browse** to select a program file, then click **Load Program**.
 
 ### Execution Controls
 
-- **Run (F5):** Executes instructions until the machine halts or reaches the execution step limit.
-- **Step (F10):** Executes one instruction at a time.
+- **Run (F5):** Executes the program until HALT, with a step limit to prevent an endless loop from freezing the window.
+- **Step (F10):** Executes one instruction.
 - **Reset CPU:** Resets the CPU state.
-- **Reset Memory:** Clears the memory.
+- **Reset Memory:** Clears memory.
 
 ### CPU Registers
 
-Displays all 16 registers (R0–RF), the Program Counter (PC), and the Instruction Register (IR).
-
-Double-click a register to edit its value.
+Displays R0–RF, PC, and IR. Double-click a register to edit its value.
 
 ### Memory Grid
 
 Displays all 256 memory cells.
 
 - Each row and column represents one hexadecimal digit of the address.
-- Double-click a cell to edit its value.
-- Orange indicates the instruction at the current PC.
-- Green indicates a recently changed memory cell.
-- The **Heatmap** option visualizes memory values using different brightness levels.
+- Double-click a cell to edit it.
+- **Orange:** Indicates the instruction at the current PC.
+- **Green:** Indicates a recently changed cell.
+- **Heatmap:** Colors memory cells according to their values; brighter colors represent larger values.
 
 ### Program Listing
 
-Displays the loaded program in a readable format. The `>` marker indicates the next instruction to be executed.
+Displays a readable view of the loaded program. The `>` marker indicates the next instruction to be executed.
 
 ### Screen
 
-Displays values written to memory address `FF`.
+Displays every value stored at memory address `FF`.
 
 ### Additional Features
 
-- **Theme Button:** Switches between available color themes.
+- **Theme Button:** Cycles through the available color themes.
 - **Help Button:** Opens a short help window.
-- **Status Bar:** Displays status messages and errors.
+- **Status Line:** Displays messages and errors.
 
 ---
 
-## 7. Program File Format
+## 8. Program File Format
 
-A program file contains one instruction per line.
-
-Each instruction must consist of four hexadecimal digits.
+A program file contains one instruction per line, written as four hexadecimal digits.
 
 - Empty lines are ignored.
 - Lines beginning with `;` are treated as comments.
-- Any text after the first four instruction digits is ignored.
-- Programs containing invalid instructions are rejected.
+- Anything after the first four instruction digits on a line is ignored.
+- A program containing an invalid instruction is rejected.
 
 ### Example Program
 
@@ -229,17 +242,17 @@ Each instruction must consist of four hexadecimal digits.
 C000 ; Halt
 ```
 
-The program performs the following operations:
+The example program:
 
-1. Loads the value `05` into R0.
-2. Loads the value `07` into R1.
+1. Loads `05` into R0.
+2. Loads `07` into R1.
 3. Adds R0 and R1, storing the result in R2.
-4. Writes R2 to the screen through memory address `FF`.
+4. Writes the value of R2 to the screen through address `FF`.
 5. Halts execution.
 
 ---
 
-## 8. Supported Instructions
+## 9. Supported Instructions
 
 The simulator supports the following Vole machine instructions:
 
@@ -249,7 +262,7 @@ The simulator supports the following Vole machine instructions:
 | `2RXY` | Loads the immediate value XY into register R. |
 | `3RXY` | Stores the contents of register R in memory cell XY. |
 | `40RS` | Copies the contents of register R into register S. |
-| `5RST` | Adds the contents of registers S and T as two's-complement integers and stores the result in R. |
+| `5RST` | Adds registers S and T as two's-complement integers and stores the result in R. |
 | `6RST` | Adds the floating-point values in registers S and T and stores the result in R. |
 | `7RST` | Performs bitwise OR between registers S and T. |
 | `8RST` | Performs bitwise AND between registers S and T. |
@@ -263,7 +276,7 @@ The simulator supports the following Vole machine instructions:
 The simulator uses an 8-bit floating-point representation:
 
 - 1 sign bit.
-- 3 exponent bits using excess-4 representation.
+- 3 exponent bits (excess-4).
 - 4 mantissa bits.
 
 Example:
@@ -276,7 +289,7 @@ This represents:
 
 ---
 
-## 9. Memory-Mapped Screen Output
+## 10. Memory-Mapped Screen Output
 
 The simulator uses memory-mapped I/O to handle screen output.
 
@@ -288,13 +301,13 @@ For example:
 32FF
 ```
 
-This stores the contents of register R2 at address `FF`, causing the value to appear on the simulated screen.
+This instruction stores the contents of register R2 at address `FF`, causing the value to appear on the simulated screen.
 
-Writing to other memory addresses changes memory without producing screen output.
+Writing to any other memory address changes memory without producing screen output.
 
 ---
 
-## 10. Validation and Error Handling
+## 11. Validation and Error Handling
 
 The simulator checks several conditions to prevent invalid operations:
 
@@ -307,15 +320,13 @@ The simulator checks several conditions to prevent invalid operations:
 
 ---
 
-## 11. Sample Programs and Screenshots
+## 12. Sample Programs and Screenshots
 
-The `sample_programs/` folder contains example programs that demonstrate different machine instructions and operations.
-
-The `screenshots/` folder contains screenshots showing the GUI and simulator execution.
+See the `sample_programs/` and `screenshots/` folders for example Vole programs, GUI screenshots, and execution results.
 
 ---
 
-## 12. Technologies Used
+## 13. Technologies Used
 
 - **C++17** – Core programming language.
 - **Object-Oriented Programming** – Project architecture and component organization.
@@ -325,11 +336,11 @@ The `screenshots/` folder contains screenshots showing the GUI and simulator exe
 
 ---
 
-## 13. Possible Future Improvements
+## 14. Possible Future Improvements
 
 - Add more sample programs demonstrating complex instruction sequences.
 - Improve the visual representation of CPU execution.
-- Add more detailed execution history and debugging tools.
+- Add detailed execution history and debugging tools.
 - Extend the simulator with additional educational features.
 
 ---
