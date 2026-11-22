@@ -45,7 +45,7 @@ bool Instruction::decode(const std::string& hexCode) {
     return true;
 }
 
-//*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*/*
+
 
 void Instruction::clear() {
     rawInstruction = "0000";
